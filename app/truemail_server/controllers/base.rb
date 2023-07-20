@@ -32,9 +32,9 @@ module TruemailServer
         [object, status, TruemailServer::Controllers::Base::CONTENT_TYPE]
       end
 
-      def token_valid?
+      def token_valid?        
         TruemailServer::Services::AccessToken.validate(
-          headers[TruemailServer::Controllers::Base::AUTHORIZATION_HEADER]
+          headers[TruemailServer::Controllers::Base::AUTHORIZATION_HEADER] || params[:token]
         )
       end
     end
